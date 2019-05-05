@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posts</title>
+<link rel="stylesheet" type="text/css" href="css/posts.css">
+</head>
+
+<body>
+
+	<header>
+		<p th:text="'Welcome, ' + ${loggedUser.getUsername()} + '!'"></p>
+		<h2>Comments</h2>
+		<nav>
+			<form th:action="@{/createPost}" th:object="${loggedUser}" method="get">
+				<input type="hidden" th:value="${loggedUser.getUsername()}" name="username"/>
+				<input type="submit" id="newpost" value="New Post" />
+			</form>
+
+			<form th:action="@{/logOff}" method="get">
+				<input type="submit" id="logoff" value="Log off" />
+			</form>
+		</nav>
+	</header>
+
+	<table>
+
+		<tr id="head">
+			<th id="user">User</th>
+			<th id="comment">Comment</th>
+			<th id="date">Date posted</th>
+		</tr>
+		
+		<tr th:each="pos: ${posts}">
+			<td th:text="${pos.getUser().getUsername()}"></td>
+			<td th:text="${pos.getComment()}"></td>
+			<td th:text="${pos.getDate()}"></td>
+		</tr>
+
+	</table>
+
+	<footer>
+		<span>Site created by Francisco Fonseca.</span>
+	</footer>
+
+</body>
+
+</html>

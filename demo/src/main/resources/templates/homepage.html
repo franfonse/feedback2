@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+</head>
+
+<body>
+
+	<header>
+		<h1>Welcome to my comments site!</h1>
+	</header>
+
+	<form action="#" th:action="@{/login}" th:object="${loginUser}" method="get">
+
+		<label>Username: </label>
+		<input type="text" placeholder="Enter username..." name="username"/>
+
+		<label>Password: </label>
+		<input type="password" placeholder="Enter password..." name="password"/>
+	 
+	<input type="submit" id="login" value="Sign in"/>
+	
+</form>
+
+<form th:action="@{/goRegister}" method="get">
+	<span>or...</span>
+	<button type="submit" id="register">Register</button>
+	<span>(If you're new around here!)</span>
+</form>
+
+<footer>
+	<span>Site created by Francisco Fonseca.</span>
+</footer>
+
+</body>
+
+</html>
